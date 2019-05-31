@@ -163,3 +163,50 @@ DROPBEAR_OPTIONS="-p 5799 -s -j -k -I 60"
 ```
 update-initramfs -u -k all
 ```
+
+### Network configuration (choose between 1 and 2 - BE CAREFUL: Don't use both methods)
+**Notice: Your network device name may be different**
+
+1. Using systemd-networkd
+```
+cd /etc/systemd/network#
+nano *.network
+```
+```
+[Match]
+Name=enp0s31f6
+
+[Network]
+## IPv6
+Address=YOUR.IPv6.ADDRESS/MASK
+Gateway=YOUR.IPv6.GATEWAY
+
+## IPv4
+Address=YOUR.IPv4.ADDRESS/MASK
+Gateway=YOUR.IPv4.GATEWAY
+```
+
+2. Using network interfaces
+```
+source /etc/network/interfaces.d/*
+```
+```
+cat > /etc/network/interfaces.d/lo << EOF
+auto lo
+iface lo inet loopback
+EOF
+```
+```
+cat > /etc/network/interfaces.d/enp0s31f6 << EOF
+auto enp0s31f6
+iface enp0s31f6 inet static
+  address YOUR.IPv4.ADDRESS
+  netmask YOUR.IPv4.NETMASK
+  gateway YOUR.IPv4.GATEWAY
+
+iface enp0s31f6 inet6 static
+  address YOUR.IPv6.ADDRESS
+  netmask YOUR.IPv6.NETMASK
+  gateway YOUR.IPv6.GATEWAY
+EOF
+```
