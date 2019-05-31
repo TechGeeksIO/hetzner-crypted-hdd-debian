@@ -9,6 +9,10 @@ installimage
 
 2. Edit Hetzner OS configuration
 ```
-No language indicated, so no syntax highlighting. 
-But let's throw in a <b>tag</b>.
+## changing hostname ##
+HOSTNAME goer.li
+
+# Partition
+PART /boot ext4 512M
+PART / ext4 all
 ```
