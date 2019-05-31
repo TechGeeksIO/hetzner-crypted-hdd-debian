@@ -185,6 +185,9 @@ Gateway=YOUR.IPv6.GATEWAY
 Address=YOUR.IPv4.ADDRESS/MASK
 Gateway=YOUR.IPv4.GATEWAY
 ```
+```
+systemctl enable systemd-networkd
+```
 
 2. Using network interfaces
 ```
@@ -209,4 +212,41 @@ iface enp0s31f6 inet6 static
   netmask YOUR.IPv6.NETMASK
   gateway YOUR.IPv6.GATEWAY
 EOF
+```
+
+### Finishing
+
+1. Hardening openssh - you should also disable root login later if everything works!
+```
+cd /etc/ssh/
+nano sshd_config
+```
+```
+KexAlgorithms diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,curve25519-sha256@libssh.org
+Ciphers aes128-ctr,aes192-ctr,aes256-ctr
+Macs hmac-sha2-256,hmac-sha2-512
+HostKeyAlgorithms ssh-ed25519,rsa-sha2-256,rsa-sha2-512
+```
+```
+systemctl enable ssh
+```
+
+2. Update initramfs + grub
+```
+update-initramfs -u -k all
+update-grub
+```
+
+3. Finalizing and reboot
+```
+exit
+```
+```
+# Cleanup
+sync
+umount -R /mnt
+cd ..
+```
+```
+reboot
 ```
