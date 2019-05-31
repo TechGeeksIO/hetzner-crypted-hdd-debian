@@ -6,8 +6,7 @@ Hetzner root server full disk encryption with cryptsetup LUKS and SWRAID1 on NVM
 <br><br>```installimage```
 
 2. Edit Hetzner OS configuration
-<br><br>
-```
+<br><br>```
 No language indicated, so no syntax highlighting. 
 But let's throw in a <b>tag</b>.
 ```
