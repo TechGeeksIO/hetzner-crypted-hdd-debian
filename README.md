@@ -12,7 +12,7 @@ installimage
 ```
 # Partitioning
 SWRAID 1                   # 0 = No RAID; 1 = RAID
-SWRAIDLEVEL 1       # 0 = Striping; 1 = Mirrorin
+SWRAIDLEVEL 1              # 0 = Striping; 1 = Mirrorin
 
 # Hostname
 HOSTNAME your.hostname
@@ -21,6 +21,7 @@ HOSTNAME your.hostname
 PART /boot ext4 512M
 PART / ext4 all
 ```
-**After that start the install routine with `F2 (save)` + `F10 (quit editor)` and confirm with `OK`.**
+
+3. After that start the install routine with `F2 (save)` + `F10 (quit editor)` and confirm with `OK`.
 
 ### Beginn encryption
