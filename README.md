@@ -149,5 +149,17 @@ nano authorized_keys
 ```
 ```
 no-port-forwarding,no-agent-forwarding,no-X11-forwarding,command="/bin/cryptroot-unlock" ssh-rsa AAAXXX_YOUR_PUBLIC_KEY
+```
 
+10. Changing dropbear listening port
+```
+nano config
+```
+```
+DROPBEAR_OPTIONS="-p 5799 -s -j -k -I 60"
+```
+
+11. Update initramfs
+```
+update-initramfs -u -k all
 ```
