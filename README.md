@@ -26,7 +26,7 @@ PART / ext4 all
 
 3. After that start the install routine with `F2 (save)` + `F10 (quit editor)` and confirm with `OK`.
 
-### Beginn encryption
+### Encryption of main partition
 
 1. Encrypting - main partition (/dev/md1)
 ```
@@ -43,7 +43,9 @@ cryptsetup luksOpen /dev/md1 cryptroot
 mkfs.ext4 -L root /dev/mapper/cryptroot
 ```
 
-4. Mount crypted volume and mount it into /mnt/boot
+### Installing minimal Debian OS in encrypted HDD
+
+1. Mount crypted volume and mount it into /mnt/boot
 ```
 mount /dev/mapper/cryptroot /mnt
 mkdir -p /mnt/boot
@@ -51,4 +53,37 @@ mount /dev/md0 /mnt/boot
 cd /mnt
 rm -rf lost+found
 ls -ls /mnt
+```
+
+2. Install the latest Debian release (Stretch)
+```
+debootstrap stretch /mnt http://ftp.de.debian.org/debian/
+```
+
+3. Mount OS folders
+```
+mount -t proc proc /mnt/proc/
+mount -t sysfs sys /mnt/sys/
+mount -t devtmpfs dev /mnt/dev/
+mount -t devpts devpts /mnt/dev/pts
+mount -t tmpfs tmpfs /mnt/tmp
+```
+
+4. Changing boot order
+```
+genfstab -pL /mnt >> /mnt/etc/fstab
+cat /mnt/etc/fstab
+```
+
+### Switching (chroot) into fresh installed OS + configuration
+
+1. Chroot to installed OS
+```
+chroot /mnt /bin/bash
+. /etc/profile
+```
+
+2. Check for updates
+```
+apt update -y && apt upgrade -y
 ```
