@@ -90,8 +90,8 @@ apt update -y && apt upgrade -y
 
 3. Adding Google Nameserver to /etc/resolv.conf
 ```
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
-echo "nameserver 8.8.4.4" > /etc/resolv.conf
+echo "nameserver 46.182.19.48" > /etc/resolv.conf
+echo "nameserver 204.152.184.76" > /etc/resolv.conf
 ```
 
 4. Editing crypttab
@@ -137,7 +137,7 @@ locale-gen
 echo -e 'LANG="en_US.UTF-8"\nLANGUAGE="en_US.UTF-8"\nLC_ALL="en_US.UTF-8"\n' > /etc/default/locale
 ```
 
-8. Set Root Password
+8. Set Root Password (please change your password after completing this tutorial)
 ```
 echo -e "root\nroot" | passwd root
 ```
