@@ -87,3 +87,15 @@ chroot /mnt /bin/bash
 ```
 apt update -y && apt upgrade -y
 ```
+
+3. Adding Google Nameserver to /etc/resolv.conf
+```
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+echo "nameserver 8.8.4.4" > /etc/resolv.conf
+```
+
+4. Editing crypttab
+```
+nano /etc/crypttab
+cryptroot /dev/md1 none luks,allow-discards
+```
