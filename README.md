@@ -250,3 +250,25 @@ cd ..
 ```
 reboot
 ```
+
+
+### Troubleshooting
+
+If something goes wrong and you need to boot again into your crypted os, please set your server back in rescue mode.
+
+```
+cryptsetup luksOpen /dev/md1 cryptroot
+```
+```
+mount /dev/mapper/cryptroot /mnt
+mount /dev/md0 /mnt/boot
+mount -t proc proc /mnt/proc/
+mount -t sysfs sys /mnt/sys/
+mount -t devtmpfs dev /mnt/dev/
+mount -t devpts devpts /mnt/dev/pts
+mount -t tmpfs tmpfs /mnt/tmp
+chroot /mnt /bin/bash
+. /etc/profile
+```
+
+Your are now back in your encrypted OS and can change everything what you need.
