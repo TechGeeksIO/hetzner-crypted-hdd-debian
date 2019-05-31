@@ -21,6 +21,6 @@ HOSTNAME your.hostname
 PART /boot ext4 512M
 PART / ext4 all
 ```
-After that start the install routine with 'F2 (save)' + 'F10 (quit editor)' and confirm with 'OK'
+After that start the install routine with `F2 (save)` + `F10 (quit editor)` and confirm with `OK`.
 
 ### Beginn encryption
