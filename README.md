@@ -98,7 +98,56 @@ echo "nameserver 8.8.4.4" > /etc/resolv.conf
 ```
 nano /etc/crypttab
 ```
-and add the following line
 ```
 cryptroot /dev/md1 none luks,allow-discards
+```
+
+5. Installing needed Debian packages
+```
+apt install -y \
+  vim \
+  curl \
+  linux-base \
+  linux-image-amd64 linux-headers-amd64 \
+  grub-pc \
+  grub2-common \
+  mdadm \
+  cryptsetup \
+  lvm2 \
+  initramfs-tools \
+  openssh-server \
+  dropbear-initramfs \
+  locales \
+  console-data \
+  htop \
+  net-tools
+```
+
+6. Set initramfs parameters
+```
+echo "DEVICE=eth0" >> /etc/initramfs-tools/initramfs.conf
+```
+
+7. Setup locales
+```
+dpkg-reconfigure locales
+sed -i '/de_DE.UTF-8/s/^#//' /etc/locale.gen
+sed -i '/en_US.UTF-8/s/^#//' /etc/locale.gen
+locale-gen
+echo -e 'LANG="en_US.UTF-8"\nLANGUAGE="en_US.UTF-8"\nLC_ALL="en_US.UTF-8"\n' > /etc/default/locale
+```
+
+8. Set Root Password
+```
+echo -e "root\nroot" | passwd root
+```
+
+9. Adding your public_key to dropbear
+```
+cd /etc/dropbear-initramfs/
+nano authorized_keys
+```
+```
+no-port-forwarding,no-agent-forwarding,no-X11-forwarding,command="/bin/cryptroot-unlock" ssh-rsa AAAXXX_YOUR_PUBLIC_KEY
+
 ```
