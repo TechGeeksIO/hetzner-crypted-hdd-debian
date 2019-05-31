@@ -12,7 +12,7 @@ installimage
 
 2. Edit Hetzner OS configuration
 ```
-# Partitioning
+# RAID setup
 SWRAID 1                   # 0 = No RAID; 1 = RAID
 SWRAIDLEVEL 1              # 0 = Striping; 1 = Mirrorin
 
