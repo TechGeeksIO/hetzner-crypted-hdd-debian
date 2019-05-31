@@ -9,7 +9,7 @@ Hetzner root server full disk encryption with cryptsetup LUKS and SWRAID1 on NVM
 <br><br>```
 HOSTNAME goer.li
 
-# Partition
+Partition
 PART /boot ext4 512M
 PART / ext4 all
 ```
