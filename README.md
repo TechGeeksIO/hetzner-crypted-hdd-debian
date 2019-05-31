@@ -97,5 +97,8 @@ echo "nameserver 8.8.4.4" > /etc/resolv.conf
 4. Editing crypttab
 ```
 nano /etc/crypttab
+```
+and add the following line
+```
 cryptroot /dev/md1 none luks,allow-discards
 ```
