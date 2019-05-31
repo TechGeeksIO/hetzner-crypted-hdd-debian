@@ -137,9 +137,9 @@ locale-gen
 echo -e 'LANG="en_US.UTF-8"\nLANGUAGE="en_US.UTF-8"\nLC_ALL="en_US.UTF-8"\n' > /etc/default/locale
 ```
 
-8. Set Root Password (please change your password after completing this tutorial)
+8. Set Root Password
 ```
-echo -e "root\nroot" | passwd root
+passwd root
 ```
 
 9. Adding your public_key to dropbear
