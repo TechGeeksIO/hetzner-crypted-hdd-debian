@@ -106,6 +106,8 @@ cryptroot /dev/md1 none luks,allow-discards
 ```
 apt install -y \
   vim \
+  sudo \
+  unzip \
   curl \
   linux-base \
   linux-image-amd64 linux-headers-amd64 \
