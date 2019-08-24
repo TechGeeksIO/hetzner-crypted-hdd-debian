@@ -57,7 +57,7 @@ ls -ls /mnt
 
 2. Install the latest Debian release (Stretch)
 ```
-debootstrap stretch /mnt http://ftp.de.debian.org/debian/
+debootstrap buster /mnt http://ftp.de.debian.org/debian/
 ```
 
 3. Mount OS folders
